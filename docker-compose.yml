@@ -3,13 +3,14 @@ version: "3"
 services:
   octobot:
     image: drakkarsoftware/octobot:stable
+    container_name: octobot
     volumes:
-       - ./logs:/octobot/logs
-       - ./backtesting:/octobot/backtesting
-       - ./tentacles:/octobot/tentacles
-       - ./user:/octobot/user
+      - ./logs:/octobot/logs
+      - ./backtesting:/octobot/backtesting
+      - ./tentacles:/octobot/tentacles
+      - ./user:/octobot/user
     ports:
-       - ${PORT:-80}:${PORT:-5001}
+      - "8081:5001"   # host:container
     restart: always
   
   watchtower:
